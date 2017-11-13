@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { githubSearchService } from "../github-search.service";
 
 @Component({
   selector: 'app-search-screen',
@@ -10,10 +11,14 @@ export class SearchScreenComponent implements OnInit {
   searchString: string = '';
   userProfiles: Array<any>;
 
-  constructor() { }
+  constructor(private service: githubSearchService) { }
 
   search() {
-    console.log(this.searchString);
+    this.service.getUser(this.searchString)
+      .subscribe(response => {
+        this.userProfiles = [];
+        this.userProfiles.push(response);
+      });
   }
 
   ngOnInit() {

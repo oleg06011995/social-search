@@ -8,6 +8,8 @@ import { MatToolbarModule, MatInputModule, MatCardModule, MatButtonModule } from
 import { AppComponent } from './app.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { SearchScreenComponent } from './search-screen/search-screen.component';
+import { githubSearchService } from "./github-search.service";
+import{ HttpModule } from "@angular/http";
 
 
 @NgModule({
@@ -23,9 +25,10 @@ import { SearchScreenComponent } from './search-screen/search-screen.component';
     MatInputModule,
     MatCardModule,
     MatButtonModule,
-    FormsModule
+    FormsModule,
+    HttpModule
   ],
-  providers: [],
+  providers: [githubSearchService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
